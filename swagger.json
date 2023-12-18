@@ -1,0 +1,184 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "1.0.0",
+        "description": "API for HealthGuard ",
+        "title": "HealthGuard API"
+    },
+    "servers": [
+        {
+            "url":"http://localhost:8000"
+        }
+    ],
+    "components": {
+        "securitySchemes": {
+            "JWT": {
+                "in": "header",
+                "name": "Authorization",
+                "type": "apiKey"
+            }
+        }
+    },
+    "paths": {
+        "/api/users/signup": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Signup",
+                "description": "User registration",
+                "requestBody": {
+                    "content": {
+                        "application/json": { 
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type":"string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    },
+                                    "type": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Incorrect Inputs"
+                    }
+                }
+            }
+        },
+
+
+        "/api/users/signin": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Login",
+                "description": "User login to get token",
+                "requestBody": {
+                    "content": {
+                        "application/json": { 
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "email": {
+                                        "type": "string"
+                                    },
+                                    "password": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "400": {
+                        "description": "Incorrect Credentials"
+                    }
+                }
+            }
+        },
+
+        "/api/patient/appoinment": {
+            "post": {
+                "tags": ["Patient"],
+                "summary": "Get Appoinment",
+                "description": "Patient can book appoinments with doctors",
+                "security": [{ "JWT": {} }],
+                "requestBody": {
+                    "content": {
+                        "application/json": { 
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type":"string"
+                                    },
+                                    "date": {
+                                        "type": "string"
+                                    },
+                                    "time": {
+                                        "type": "string"
+                                    },
+                                    "email": {
+                                        "type": "string"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        },
+
+        "/api/patient/reminder": {
+            "post": {
+                "tags": ["Patient"],
+                "summary": "Get Reminder",
+                "description": "Patient will set medicines reminder",
+                "security": [{ "JWT": {} }],
+                "requestBody": {
+                    "content": {
+                        "application/json": { 
+                            "schema": {
+                                "type": "object",
+                                "properties": {
+                                    "name": {
+                                        "type":"string"
+                                    },
+                                    "number": {
+                                        "type": "string",
+                                        "pattern": "^\\+91[0-9]{10}$",
+                                        "description": "A string starting with '+91' followed by 10 digits"
+                                    },
+                                    "time": {
+                                        "type": "string",
+                                        "pattern": "^(?:[01]\\d|2[0-3]):[0-5]\\d$",
+                                        "description": "A string representing time in the format 'HH:mm'"
+                                    },
+                                    "medicineName": {
+                                        "type": "array",
+                                        "items": {
+                                        "type": "string"
+                                        }
+                                    
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    },
+                    "401": {
+                        "description": "Unauthorized"
+                    }
+                }
+            }
+        }
+    }
+}

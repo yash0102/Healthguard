@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Input Form</title>
+</head>
+<body>
+
+<form id="userInputForm">
+    <label for="name">Name:</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="date">Date:</label>
+    <input type="date" id="date" name="date" required>
+
+    <label for="time">Time:</label>
+    <input type="time" id="time" name="time" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+
+    <label for="medicineName1">Medicine 1:</label>
+    <input type="text" name="medicineName" id="medicineName1">
+
+    <label for="medicineName2">Medicine 2:</label>
+    <input type="text" name="medicineName" id="medicineName2">
+
+    <!-- Add more input fields as needed -->
+
+    <button type="button" onclick="submitForm()">Submit</button>
+</form>
+
+<script>
+    function submitForm() {
+        // Get the values of the input elements
+        const name = document.getElementById("name").value;
+        const date = document.getElementById("date").value;
+        const time = document.getElementById("time").value;
+        const email = document.getElementById("email").value;
+
+        // Get all input elements with the name "medicineName"
+        const medicineInputs = document.getElementsByName("medicineName");
+
+        // Convert NodeList to an array
+        const medicineArray = Array.from(medicineInputs).map(input => input.value);
+
+        // Log the values
+        console.log("Name:", name);
+        console.log("Date:", date);
+        console.log("Time:", time);
+        console.log("Email:", email);
+        console.log("Medicine Array:", medicineArray);
+    }
+</script>
+
+</body>
+</html>

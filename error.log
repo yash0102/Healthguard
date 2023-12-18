@@ -1,0 +1,2 @@
+{"level":"error","message":"TimeStamp: Sun Dec 17 2023 01:03:46 GMT+0530 (India Standard Time) req URL: /api/patient/reminder error msg: Something went wrong with database"}
+{"level":"error","message":"TimeStamp: Sun Dec 17 2023 01:26:53 GMT+0530 (India Standard Time) req URL: /api/patient/appoinment error msg: Something went wrong with database"}
