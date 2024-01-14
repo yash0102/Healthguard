@@ -31,7 +31,7 @@ EMAIL = YOUR_EMAIL_ID
 PASSWORD = YOUR_PASSWORD
 DB_URL = mongodb://127.0.0.1:27017/HealthGuard
 JWT_SECRET = YOUR_JWT_SECRET
-PORT = 8080
+PORT = 8000
 ```
 
 ```sh
@@ -40,7 +40,7 @@ npm server.js
 
 ## API Documention:
 
-http://localhost:8080/api-docs
+http://localhost:8000/api-docs
 
 
 

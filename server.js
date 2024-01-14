@@ -28,12 +28,15 @@ server.get('/', (req, res)=> {
 server.use('/api-docs', swagger.serve , swagger.setup(apiDocs)); 
 server.use('/api/users',UserRouter);
 server.use('/api/patient', jwtAuth,PatientRoute);
+
 // Default Route
 server.use((req, res)=> {
     res.status(404).send("API not found. Please check our documentation for more information at localhost:8000/api-docs");
 });
+
 // Error Handle minddleware
-server.use(errorHandlerMiddleware)
+server.use(errorHandlerMiddleware);
+
 server.listen(port, ()=> {
     console.log(`Server is running on ${port}`);
     connectToMongoDB();
